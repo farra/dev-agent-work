@@ -48,6 +48,7 @@ show_usage() {
     echo "  - WORK.org"
     echo "  - AGENTS.md"
     echo "  - .claude/commands/ (all slash commands)"
+    echo "  - .claude/agents/ (work-manager sub-agent)"
 }
 
 # Check if correct number of arguments provided
@@ -90,6 +91,7 @@ fi
 print_info "Creating directory structure..."
 mkdir -p "$TARGET_DIR/work"
 mkdir -p "$TARGET_DIR/.claude/commands"
+mkdir -p "$TARGET_DIR/.claude/agents"
 
 # Copy essential files
 print_info "Copying essential files..."
@@ -130,6 +132,15 @@ for cmd_file in "$SCRIPT_DIR/.claude/commands"/*.md; do
     fi
 done
 
+# Copy sub-agents
+print_info "Copying sub-agents..."
+for agent_file in "$SCRIPT_DIR/.claude/agents"/*.md; do
+    if [ -f "$agent_file" ]; then
+        cp "$agent_file" "$TARGET_DIR/.claude/agents/"
+        print_success "Copied $(basename "$agent_file")"
+    fi
+done
+
 # Note: README.md and LICENSE are not copied as they are specific to this template project
 print_info "Skipping README.md and LICENSE (project-specific files)"
 
@@ -147,6 +158,7 @@ echo "  - work/WORK-template.org"
 echo "  - WORK.org"
 echo "  - AGENTS.md"
 echo "  - .claude/commands/ (3 slash commands)"
+echo "  - .claude/agents/ (work-manager sub-agent)"
 echo
 print_info "For more information, see AGENTS.md or the original project:"
 echo "  https://github.com/farra/dev-agent-work"

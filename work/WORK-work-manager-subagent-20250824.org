@@ -1,0 +1,89 @@
+#+TITLE: WORK-work-manager-subagent-20250824
+#+AUTHOR: Claude AI Assistant  
+#+DATE: [2025-08-24]
+#+STARTUP: overview logdone lognoteclock-out lognotedone
+#+TODO: TODO(t) STRT(s) WAIT(w) | DONE(d) CANCELLED(c)
+#+FILETAGS: :work:
+
+* Objective
+:PROPERTIES:
+:CREATED:     [2025-08-24]
+:END:
+
+Create a work-manager sub-agent for Claude Code that automatically handles work tracking in the background while the main agent focuses on implementation. This sub-agent will proactively maintain the dev-agent-work system, sync with issue trackers, and ensure seamless work continuity.
+
+** Context
+
+Based on Claude Code's sub-agent functionality, we need to create a specialized agent that runs in parallel with the main coding agent. This will transform our manual slash command system into an intelligent, always-on work tracking companion.
+
+Key requirements identified:
+- Sub-agents operate in separate context windows with focused responsibilities
+- They can be configured with specific tools and triggered proactively
+- Best practice is single-responsibility agents with detailed system prompts
+- Integration should be seamless and non-intrusive to main agent workflow
+
+Current system relies on manual `/work-start`, `/work-sync`, `/work-summarize` commands. The sub-agent will automate these processes by monitoring file changes, task completions, and session state transitions.
+
+** Rules
+- Use the Tasks section below to track active work. Update it as tasks are added, completed, or split.
+- For each task:
+  - Clarify the objective. State any assumptions explicitly.
+  - Decompose complex tasks into plans and subtasks.
+  - When appropriate, challenge the task definition: suggest alternatives, simplifications, or improved goals.
+- After each task or change, append an entry to the Work Log with:
+  - What you did.
+  - What you learned or decided.
+  - Any questions, insights, or blockers that emerged.
+- After each task is complete, commit to the git branch
+- This document is the source of truth for project continuity. Update it so the project could be resumed cold from this file alone.
+
+* Tasks
+- [X] Check this off to confirm you've read the project and understand the rules
+- [X] Design comprehensive work-manager sub-agent specification
+- [X] Create .claude/agents/work-manager.md file with proper configuration
+- [X] Define trigger conditions and proactive invocation patterns
+- [ ] Implement automatic WORK file monitoring and updates
+- [ ] Add intelligent issue tracker sync capabilities
+- [ ] Create WORK.org maintenance functionality
+- [ ] Test sub-agent with various workflow scenarios
+- [ ] Update project documentation to include sub-agent usage
+- [ ] Validate integration with existing slash commands
+
+* Work Log
+** <2025-08-24 Sat> Work session started
+- Created WORK file for sub-agent implementation
+- Defined objective based on previous planning discussion
+- Established context from Claude Code sub-agent documentation research
+- Ready to begin sub-agent design and implementation
+
+** <2025-08-24 Sat> Sub-agent specification research completed
+- Analyzed SuperClaude agent examples to understand patterns:
+  - python-expert.md: Shows production-focus with clear triggers/boundaries
+  - quality-engineer.md: Demonstrates systematic approach with risk assessment
+  - requirements-analyst.md: Shows discovery-oriented agent with TodoWrite tool
+  - socratic-mentor.md: Most complex example with learning orchestration
+- Key patterns identified:
+  - YAML frontmatter: name, description, category, tools
+  - Clear trigger conditions for proactive invocation
+  - Behavioral mindset and focus areas definition
+  - Structured key actions and expected outputs
+  - Explicit boundaries (Will/Will Not) for scope clarity
+- Ready to design work-manager specification using these patterns
+
+** <2025-08-24 Sat> Work-manager agent generated successfully
+- Used /agents slash command with our crafted description
+- Claude Code generated comprehensive .claude/agents/work-manager.md file
+- Generated agent includes:
+  - Excellent frontmatter with haiku model and proactive triggers
+  - Clear responsibilities: file management, work logs, external sync, monitoring
+  - Operational guidelines: silent background operation, atomic operations, retry logic
+  - Quality assurance: validation, integrity checks, backup copies
+- Agent description includes specific examples for when to use
+- Ready to test and refine the generated specification
+
+** <2025-08-24 Sat> Updated init-project.sh to include sub-agent
+- Modified init script to create .claude/agents/ directory
+- Added sub-agent copying loop to copy all *.md files from .claude/agents/
+- Updated usage help and file listing to mention work-manager sub-agent
+- Now new projects will automatically get the work-manager agent
+- Complete dev-agent-work system now includes automatic work tracking
