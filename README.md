@@ -40,6 +40,13 @@ Each `WORK-*.org` file contains:
 - **Tasks**: Checkbox list (`- [ ]`) tracking progress
 - **Work Log**: Timestamped journal of actions and decisions
 
+### Examples
+
+See the included examples of actual work session files created while working on this system:
+
+- [./work/WORK-init-script-1.org](work/WORK-init-script-1.org): Shows an example that was created by referencing a github issue.
+- [./work/WORK-work-manager-subagent-20250824.org](work/WORK-work-manager-subagent-20250824.org): Shows an example that was created without a remote issue.
+
 ## Available Slash Commands
 
 ### `/work-start [parameter]`
