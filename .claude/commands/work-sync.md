@@ -72,6 +72,25 @@ For Linear:
 ### 5. Sync Content
 
 #### What to sync TO issue tracker:
+
+**A. Always update issue status based on work session status:**
+```
+For GitHub:
+- If work session is DONE/completed: `gh issue close [issue-number]`
+- If work session is BLOCKED: Add "blocked" label
+- If work session is in progress: Ensure issue remains open
+
+For JIRA:
+- If work session is DONE: Transition to "Done" status
+- If work session is BLOCKED: Transition to "Blocked" status
+- If work session is in progress: Transition to "In Progress" status
+
+For Linear:
+- Update issue state to match work session status
+- Set appropriate labels based on work progress
+```
+
+**B. Post status update comment:**
 ```
 Status Update:
 - Work Session: WORK-[description]
