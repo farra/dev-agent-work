@@ -1,0 +1,41 @@
+#+TITLE: WORK-[description]-[ticket/timestamp]
+#+AUTHOR: Developer Name
+#+DATE: [2025-08-23]
+#+STARTUP: overview logdone lognoteclock-out lognotedone
+#+TODO: TODO(t) STRT(s) WAIT(w) | DONE(d) CANCELLED(c)
+#+FILETAGS: :work:
+
+* Objective
+:PROPERTIES:
+:CREATED:     [2025-08-23]
+:JIRA:     [[https://company.atlassian.net/browse/PROJ-123][PROJ-123]]
+:GITHUB:   [[https://github.com/company/repo/issues/456][Issue #456]]
+:NOTION:   [[https://notion.so/page-id][Project Planning]]
+:END:
+
+[REPLACE WITH 2-3 SENTENCES. UPDATE PROPERTIES ABOVE]
+
+** Context
+
+[REPLACE WITH TASK CONTEXT]
+
+
+** Rules
+- Use the Tasks section below to track active work. Update it as tasks are added, completed, or split.
+- For each task:
+  - Clarify the objective. State any assumptions explicitly.
+  - Decompose complex tasks into plans and subtasks.
+  - When appropriate, challenge the task definition: suggest alternatives, simplifications, or improved goals.
+- After each task or change, append an entry to the Work Log with:
+  - What you did.
+  - What you learned or decided.
+  - Any questions, insights, or blockers that emerged.
+- After each task is complete, commit to the git branch
+- This document is the source of truth for project continuity. Update it so the project could be resumed cold from this file alone.
+* Tasks
+- [ ] Check this off to confirm you've read the project and understand the rules
+* Work Log
+** <2025-08-23 Sat> Example Work Log Entry
+- Reviewed the requirements
+- Updated the task list
+- Added a new work log entry with a correct system timestamp

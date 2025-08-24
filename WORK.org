@@ -1,0 +1,113 @@
+#+TITLE: Work Sessions Overview
+#+AUTHOR: J. Aaron Farr <afarr@jamandtea.studio>
+#+DATE: [2025-08-23]
+#+STARTUP: overview logdone
+#+TODO: TODO(t) INPROG(i) BLOCKED(b) | DONE(d) CANCELLED(c)
+
+* AI Agent Quick Start
+:PROPERTIES:
+:PRIORITY: A
+:END:
+
+** Essential Commands
+- `/work-start [param]` - Start new or resume work (param: WORK file, URL, or description)
+- `/work-sync [file]` - Sync with issue tracker and update WORK.org
+- `/work-summarize [file]` - Summarize session and update tracking
+
+** Work File Location
+- Active work files: `./work/WORK-*.org`
+- Template: `./work/WORK-template.org`
+- Naming: `WORK-[description]-[ticket/timestamp].org`
+
+** Key Instructions
+1. ALWAYS read the WORK file before starting work
+2. Update task checkboxes: `- [ ]` → `- [X]` as you complete them
+3. Add timestamped Work Log entries for significant actions
+4. Commit after EACH completed task with descriptive message
+5. Run `/work-summarize` at session end
+
+* Project Overview
+
+This project uses org-mode (.org files) for work session tracking:
+
+- `WORK.org` contains the project overview and active tasks
+- Individual sessions are in `./work/WORK-*.org` files
+
+** Quick Links
+- [[file:README.md][Project README]]
+- [[file:AGENTS.md][Agent Guidelines]]
+- [[file:docs/][Documentation]]
+
+** WORK Format Details
+- WORK files are named using the pattern WORK-[short-description]-[ticket/timestamp].org
+- Required headers in each WORK file:
+  - **Objective**: Goal stated in 2-3 sentences
+  - **Context**: Project-specific context and references
+  - **Rules**: Coding rules that override general instructions
+  - **Tasks**: Checklist using `- [ ]` format
+  - **Work Log**: Timestamped actions and decisions
+
+** Example WORK.org Entry
+#+BEGIN_SRC org
+** TODO [[file:work/WORK-refactor-db-20250823.org][Database Refactoring]]
+   :PROPERTIES:
+   :CREATED:  [2025-08-23]
+   :PRIORITY: B
+   :END:
+   - Status: In progress
+   - Last session: Updated the schema
+#+END_SRC
+
+
+
+* Active Work Sessions
+
+* Completed Work Sessions
+
+* Blocked/Paused Work
+
+* Sync Configuration
+:PROPERTIES:
+:CREATED:  [2025-08-24]
+:END:
+
+** Issue Tracker Settings
+- Primary tracker: GitHub/JIRA/Linear (configure as needed)
+- Repository: [github.com/org/repo]
+- Project key: [PROJ]
+- Authentication: Use `gh` CLI, MCP tools, or API tokens
+- Auto-sync: enabled/disabled
+
+** Sync Instructions
+- Check for MCP server tools first (names starting with mcp__)
+- Fallback to CLI tools: `gh` for GitHub, `jira` CLI, etc.
+- Use WebFetch for read-only operations if no tools available
+- Store credentials in environment variables or tool configs, never in files
+
+** API Endpoints (if needed)
+- GitHub API: https://api.github.com
+- JIRA API: https://[instance].atlassian.net/rest/api/3
+- Linear API: https://api.linear.app/graphql
+
+* Development Notes
+
+* Reference
+
+** Slash Commands
+| Command | Purpose | Parameters |
+|---------|---------|------------|
+| `/work-start` | Start/resume work | WORK file, issue URL, or description |
+| `/work-sync` | Sync with tracker | WORK file (optional) |
+| `/work-summarize` | End session | WORK file (optional) |
+
+** Shell Commands
+#+BEGIN_SRC bash :exports code
+# Create new work session
+cp work/WORK-template.org work/WORK-[description]-[ticket].org
+
+# Find active tasks
+grep -r "TODO\|INPROG\|STRT" work/
+
+# List recent work files
+ls -lt work/WORK-*.org | head -5
+#+END_SRC
