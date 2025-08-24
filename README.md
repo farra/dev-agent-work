@@ -1,20 +1,16 @@
 # dev-agent-work
 
-A proof-of-concept work session tracking system for development agents like Claude Code, Cursor, and other AI coding assistants.
+A proof-of-concept org-mode based work session tracking system for development agents like Claude Code, Cursor, and other AI coding assistants.
 
 ## Overview
 
-This project provides a structured, local filesystem approach to tracking development work sessions that maintains continuity between AI agent interactions. It uses org-mode files to create persistent "memory" that allows agents to resume work seamlessly while maintaining compatibility with external issue tracking systems like JIRA, GitHub Issues, or Linear.
+This project provides a structured, local filesystem approach to tracking development work sessions that maintains continuity between AI agent interactions. It uses org-mode files to create work session "memory" that allows agents to resume work while maintaining compatibility with external issue tracking systems like JIRA, GitHub Issues, or Linear.
+
+Currently only supports Claude Code. Pull requests for other dev agents welcome.
 
 ## Purpose
 
-AI coding assistants excel at individual tasks but often lose context between sessions. This system addresses that gap by:
-
-- **Persistent Context**: Work files maintain objective, context, rules, and progress across sessions
-- **Structured Logging**: Every action, decision, and insight is captured in timestamped logs
-- **Task Tracking**: Checkbox-based task lists show what's done and what remains
-- **Git Integration**: Each completed task triggers a commit, creating a detailed history
-- **Issue Tracker Bridge**: Links to and can import from JIRA, GitHub, etc., while maintaining local work state
+I wanted a way to track work locally and do so in a way that would allow "cold" restarts or passing the work between colleagues or coworkers. Org-mode was chosen due to its advanced work tracking features and because, well, I tend to work in emacs.
 
 ## Structure
 
@@ -25,9 +21,12 @@ AI coding assistants excel at individual tasks but often lose context between se
 │   ├── WORK-template.org      # Template for new work sessions
 │   └── WORK-*.org             # Individual work session files
 ├── .claude/
+│   └── agents/
+│       ├── work-manager.md    # Sub-agent to manage the work files
 │   └── commands/
 │       ├── work-start.md      # Start/resume work sessions
 │       └── work-summarize.md  # Summarize and update sessions
+│       └── work-sync.md       # Sync WORK.org and any remote issue tracker
 └── AGENTS.md                  # Instructions for AI agents
 ```
 
@@ -99,22 +98,14 @@ While work happens locally, the system maintains bidirectional awareness:
 - Update tickets can be done manually with work log summaries
 - Local work files provide more detail than typical ticket comments
 
-## For Developers
+## Installing
 
-To adopt this system in your project:
+Use the supplied `init-project.sh` to copy files to a new project directory:
 
-1. Copy the `work/` directory structure
-2. Add the `.claude/commands/` files for slash command support
-3. Copy the "Work Session Management" section from AGENTS.md to your project's CLAUDE.md or agent instructions
-4. Initialize WORK.org with your project overview
+``` sh
+  $ init-project.sh ~/dev/my-new-project 
+```
 
-## Benefits
-
-- **Continuity**: New agents can pick up exactly where previous ones left off
-- **Accountability**: Every decision and action is logged with timestamps
-- **Quality**: Enforces thoughtful planning before implementation
-- **Debugging**: Work logs provide detailed history when issues arise
-- **Knowledge Transfer**: Self-documenting work that any developer can follow
 
 ## Status
 
@@ -127,7 +118,7 @@ This is a **proof of concept** exploring how structured work tracking can enhanc
 
 ## License
 
-MIT - See LICENSE file for details
+Apache 2 - See LICENSE file for details
 
 ## Contributing
 
@@ -136,4 +127,3 @@ This is an experimental concept. Feel free to:
 - Fork and adapt for your workflow
 - Share your experiences using similar approaches
 
-The goal is to establish patterns that make AI-assisted development more reliable and maintainable.
